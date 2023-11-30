@@ -25,13 +25,11 @@
 <h2>Data Display</h2>
 
 <?php
-// Read the CSV file
+
 $file = fopen('data.csv', 'r');
 
-// Check if the file is opened successfully
 if ($file !== false) {
     echo '<table>';
-    // Read the header row separately and create table headers
     $header = fgetcsv($file);
     echo '<tr>';
     foreach ($header as $col) {
@@ -39,7 +37,6 @@ if ($file !== false) {
     }
     echo '</tr>';
 
-    // Read and display the rest of the rows
     while (($row = fgetcsv($file)) !== false) {
         echo '<tr>';
         foreach ($row as $col) {
@@ -50,10 +47,7 @@ if ($file !== false) {
 
     echo '</table>';
 
-    // Close the file
     fclose($file);
-} else {
-    echo '<p>Error opening the file.</p>';
 }
 ?>
 
